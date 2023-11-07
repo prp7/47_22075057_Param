@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block links %}
+
+<link rel="stylesheet" href="/static/css/home.css">
+{% endblock %}
+
+{% block title %}
+ComplaintMS
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <a class="navbar-brand ms-3" href="{% url 'home' %}">CampusVoice</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home'%}">Home</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#complaints">Complaints</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse d-flex justify-content-end me-5">
+        <ul class="navbar-nav align-self-end">
+        <li class="nav-item">
+            <a class="nav-link align-self-end" href="{% url 'login_page'%}">Login</a>
+        </li>
+    </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-around align-items-center">
+        <div class="col-md-6">
+            <h1 class="mytxt">Welcome to CampusVoice</h1>
+            <p class="ms-2">This is a platform for students to register their issues, and faculties to resolve them.</p>
+            <p class="ms-2">Register an account to get started!</p>
+            <a href="{% url 'signup_page' %}" class="btn btn-primary mybtn ms-2">Register</a>
+        </div>
+        <div class="col-md-6">
+            <img src="/static/img/complaint.jpg" alt="Issue Portal Image" class="img-fluid" id="my_img">
+            <img src="/static/img/complaint3.jpg" alt="Issue Portal Image" class="img-fluid mt-4 ms-3" id="my_img">
+        </div>
+    </div>
+</div>
+
+<!-- <div id="complaints" class="complaints-section">
+    <h2>Complaints and Resolutions</h2>
+    <p>We have received <span id="complaintCount">0</span> complaints so far.</p>
+    <p><span id="resolutionCount">0</span> of these have been successfully resolved.</p>
+</div> -->
+
+<div id="about" class="container mt-5">
+    <h2 class="mytxt">About Us</h2>
+    <p class="ms-2">Welcome to our dedicated college student portal, where we've got your academic, dining, and library experiences covered! We understand that college life can be a whirlwind of challenges, from academic stress to navigating the dining hall's culinary mysteries and the library's vast shelves. Our mission is to simplify these aspects of your college journey, making it smoother and more enjoyable.
+    <br>
+    <p class="mt-2 ms-2">At our portal, we provide a user-friendly interface where you can submit your complaints, backed by a team of faculties who are committed to addressing your issues promptly. Whether it's an academic matter, a concern related to the dining hall, or an issue with library services, we're here to listen and assist.
+    </p>
+</div>
+
+<div id="contact" class="container mt-5">
+    <h2 class="mytxt">Contact Us</h2>
+    <p class="ms-2">If you have any questions or need assistance, please contact us at <a href="mailto:bhanu.verma.cse22@itbhu.ac.in">bhanu.verma.cse22[at]itbhu.ac.in</a> and <a href="mailto:bhanu.verma.cse22@itbhu.ac.in">param.parsewar.cse22[at]itbhu.ac.in</a></p>
+</div>
+
+<footer class="container-fluid text-center mt-5">
+    <p>&copy; made by Bhanu Verma and Param Ramesh Parsewar</p>
+</footer>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // JavaScript to count complaints and resolutions
+    let complaints = 0;
+    let resolutions = 0;
+
+    function countUp() {
+        setInterval(function() {
+            if (complaints < 100) { // Change this to your actual complaint count
+                complaints++;
+                document.getElementById("complaintCount").textContent = complaints;
+            }
+            if (resolutions < 80) { // Change this to your actual resolution count
+                resolutions++;
+                document.getElementById("resolutionCount").textContent = resolutions;
+            }
+        }, 100); // Adjust the interval for a smoother count-up
+    }
+
+    window.onload = countUp;
+</script>
+{% endblock %}

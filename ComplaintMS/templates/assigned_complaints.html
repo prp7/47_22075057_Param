@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/static/css/interface_style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+{% endblock %}
+
+{% block title %}
+User Interface
+{% endblock %}
+
+
+
+{% block content %}
+{% include 'sidebar.html' %}
+
+
+<div class="content">
+    
+    <a href="{% url 'my_logout_administrator' %}" class="btn btn-primary mybtn align-self-end" id="logout_btn">Logout</a>
+    
+    <h1>Welcome to the CampusVoice</h1>
+    <table class="mx-auto table-bordered table" style="margin-top: 5vh; width:80%;">
+        <tr>
+            <th>#</th>
+            <th>Issuer</th>
+            <th>Category</th>
+            <th>Complaint</th>
+            <th>Date Issued</th>
+            <th>Date Assigned</th>
+            <th>Worker Assigned</th>
+            <th>Update</th>
+        </tr>
+        {% for complaint in complaints %}
+        <tr>
+            <td>{{forloop.counter}}.</td>
+            <td>{{complaint.issuer.name}}</td>
+            <td>{{complaint.category}}</td>
+            <td>{{complaint.issue}}</td>
+            <td>{{complaint.date_issued}}</td>
+            <td>{{complaint.date_assigned}}</td>
+            <td>{{complaint.assignee.name}}</td>
+            <td><form method="post"  id="update_form_{{forloop.counter}}">
+                {% csrf_token %}
+                <input type="text"  name="complaint_id" value="{{complaint.id}}" hidden>
+                <button class="btn btn-primary mybtn confirm_update" id="update{{forloop.counter}}">Update</button>
+            </form></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</div> 
+
+<script src="/static/js/sidebar.js">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    
+<script>
+    $('.confirm_update').on('click',function(e){
+        e.preventDefault();
+        const id = $(this).attr('id').replace('update', '');
+        $.confirm({
+            icon: "fa-regular fa-circle-check fa-fade",
+            title: 'Confirm Update',
+            content: "Clicked complaint's status will be updated to 'RESOLVED'.Are you sure to UPDATE?",
+            type:'orange',
+            typeAnimated:true,
+            buttons: {
+                confirm: {
+                    btnClass: 'btn-green',
+                    action: function () { 
+                        document.getElementById('update_form_'+id).submit();
+                    }
+                },
+                cancel: {
+                    btnClass: 'btn-red any-other-class', // multiple classes.
+                    action: function () {
+                        ;
+                    }
+                }
+            }
+        })
+    }
+    )
+</script>
+{% endblock %}
+

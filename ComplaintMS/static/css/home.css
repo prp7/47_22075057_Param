@@ -1,0 +1,19 @@
+body {
+    background-color: #f5deb3; /* Wheat color background */
+}
+.navbar {
+    background-color: #8b4513; /* Saddle Brown color navbar */
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+.complaints-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+#my_img {
+    width: 20vw;
+}

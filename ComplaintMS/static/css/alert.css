@@ -1,0 +1,55 @@
+.alert-box {
+    background-color: #f2f2f2;
+    border-left: 6px solid;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.alert-box.success {
+    border-color: #4CAF50;
+}
+
+.alert-box.info {
+    border-color: #2196F3;
+}
+
+.alert-box.warning {
+    border-color: #ff9800;
+}
+
+.alert-box.error {
+    border-color: #f44336;
+}
+
+/* Icon styles */
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Close button styles */
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+0% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+}
+
+.alert-box {
+/* Your existing styles */
+animation: fadeOut 3s ease 5s 1 forwards; /* Adjust the time as needed (5s is the delay before animation starts) */
+}

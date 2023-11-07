@@ -1,0 +1,14 @@
+<button id="open-sidebar">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="sidebar navbar-collapse" id="sdbar">
+    <div class="close-sidebar me-2">
+        <i class="fa-solid fa-xmark" id="close-sidebar"></i>
+    </div>
+    <a href="{% url 'unaddressed_complaints' %}" id="prf">New Complaints</a>
+    <a href="{% url 'assigned_complaints' %}">Assigned Complaints</a>
+    <a href="{% url 'resolved_complaints_admin' %}">Resolved Complaints</a>
+    <a href="{% url 'register_worker' %}">Add a Worker</a>
+    <a href="{% url 'all_workers' %}">See All Workers</a>
+</div>

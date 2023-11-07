@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/static/css/interface_style.css">
+{% endblock %}
+
+{% block title %}
+User Interface
+{% endblock %}
+
+
+
+{% block content %}
+{% include 'sidebar_students.html' %}
+
+<div class="content" id="main_div">
+    <a href="{% url 'my_logout_student' %}" class="btn btn-primary mybtn align-self-end" id="logout_btn">Logout</a>
+
+    <h1>Welcome to the CampusVoice</h1>
+   
+</div> 
+<script src="/static/js/sidebar.js"></script>
+{% endblock %}

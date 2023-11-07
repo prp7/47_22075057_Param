@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu',sans-serif;
+}
+body {
+
+    min-height: 90vh;
+    background-color: wheat;
+}
+.signup_form {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(255, 194, 27); */
+    width: 370px;
+    border-radius: 10px;
+    height: 90vh;
+}
+
+h3 {
+    font-size: 1.9em;
+    color: rgb(187, 68, 38);
+    text-align: center;
+    margin-bottom: .7em;
+}
+
+.input-box {
+    position: relative;
+    /* right: 10px;
+    left: 10px; */
+    width: 310px;
+    margin: 20px;
+    border-bottom: 2px solid black;
+}
+
+.input-box label{
+    font-size: 1em;
+    color:black;
+    position: absolute;
+    transform: translateY(-50%);
+    top:50%;
+    left: 5px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.input-box input:focus~label{
+    top: -1.5px;
+}
+.input-box input:valid~label{
+    top: -1.5px;
+}
+.input-box input {
+    font-size: 1em;
+    width: 100%;
+    outline: none;
+    border:none;
+    background: transparent;
+    color:black;
+    height: 50px;
+    padding-left:5px;
+}
+
+.input-box ion-icon {
+    position: absolute;
+    font-size: 1.2em;
+    right: 8px;
+    top: 30%;
+    line-height: 50px;
+    color:rgb(0, 0, 0);
+}
+
+.signup_form {
+    height: 100vh;
+}
+
+button {
+    width:150px;
+    height: 2em;
+    font-size: 1em;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom:2em;
+    background-color: rgb(226, 102, 7);
+    color: white;
+}
+button:hover {
+    background-color: rgb(187, 68, 38);
+    color:white;
+}
+
+.inst {
+    position: relative;
+    width: 310px;
+    height: 2em;
+    border-bottom: 2px solid black;
+    /* border:1px solid; */
+    
+
+}
+.inst span {
+    position: absolute;
+    right: 5.5px;
+}
+
+.inst select{
+    position: absolute;
+    bottom: 0.3em;
+    width: 180px;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 1em;
+    text-align: left;
+    /* text-indent: 5px; */
+}
+
+.inst select option {
+    background-color: wheat;
+    text-align: left;
+}
+
+.inp {
+    margin: 0.3em;
+}
+
+form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+ /* Style for the message boxes */
+ .alert-box {
+    background-color: #f2f2f2;
+    border-left: 6px solid;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.alert-box.success {
+    border-color: #4CAF50;
+}
+
+.alert-box.info {
+    border-color: #2196F3;
+}
+
+.alert-box.warning {
+    border-color: #ff9800;
+}
+
+.alert-box.error {
+    border-color: #f44336;
+}
+
+/* Icon styles */
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Close button styles */
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+0% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+}
+
+.alert-box {
+/* Your existing styles */
+animation: fadeOut 3s ease 5s 1 forwards; /* Adjust the time as needed (5s is the delay before animation starts) */
+}

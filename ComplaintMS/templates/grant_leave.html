@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="/static/css/assign_worker.css">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <form method="POST" class="d-flex flex-column align-items-center">
+            {%csrf_token%}
+        <h1 class="mytxt">Grant Leave Form</h1>
+        <div class="section complaint-details my_divs">
+            <h2 class="mytxt">Worker Details:</h2>
+            <label for="worker-name">Name:</label>
+            <input type="text" id="worker-name" value="{{worker.name}}" readonly>
+
+            <label for="worker-ph">Phone:</label>
+            <input type="text" id="worker-ph" value="{{worker.phone}}" readonly>
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" value="{{worker.category}}" readonly>
+        </div>
+
+        <div class="section worker-selection my_divs">
+            <h4>Leave</h4>
+            <label for="reason">Leave Reason:</label>
+            <input type="text" id="reason" name="rsn">
+            <label for="start" >From:</label>
+            <input type="date" id="start" name="from">
+            <label for="end">To:</label>
+            <input type="date" id="end" name="to">
+        </div>
+        <button class="mybtn" type="submit">Grant Leave</button>
+    </form>
+    </div>
+{% endblock %}

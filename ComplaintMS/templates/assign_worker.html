@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="/static/css/assign_worker.css">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <form method="POST" class="d-flex flex-column align-items-center">
+            {%csrf_token%}
+        <h1 class="mytxt">Complaint-Assignment Form</h1>
+        <div class="section complaint-details my_divs">
+            <h2 class="mytxt">Complaint Details:</h2>
+            <label for="issuer-name">Issuer Name:</label>
+            <input type="text" id="issuer-name" value="{{cmp.issuer.name}}" readonly>
+
+            <label for="issue">Issue:</label>
+            <input type="text" id="issue" value="{{cmp.issue}}" readonly>
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" value="{{cmp.category}}" readonly>
+
+            <label for="department">Department:</label>
+            <input type="text" id="department" value="{{cmp.domain.domain_name}}" readonly>
+
+            <label for="date-issued">Date Issued:</label>
+            <input type="text" id="date-issued" value="{{cmp.date_issued}}" readonly>
+        </div>
+
+        <div class="section worker-selection my_divs">
+            <h2 class="mytxt">Worker Selection:</h2>
+            <h4>Select a Worker:</h4>
+            {% if available_workers %}
+            <label for="workers">Unoccupied Workers:</label>
+            <select id="workers" name="worker1">
+                <!-- <option value="worker1">Worker 1</option>
+                <option value="worker2">Worker 2</option>
+                <option value="worker3">Worker 3</option>
+                <option value="worker4">Worker 4</option> -->
+                <option value='-1' selected disabled hidden>Choose Worker</option>
+                {% for w in available_workers %}
+                <option value="{{w.id}}" >{{w.name}} ({{w.phone}})</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <label for="workers">Occupied Workers:</label>
+            <select id="workers" name="worker2">
+                <!-- <option value="worker1">Worker 1</option>
+                <option value="worker2">Worker 2</option>
+                <option value="worker3">Worker 3</option>
+                <option value="worker4">Worker 4</option> -->
+                <option value='-1' selected disabled hidden>Choose Worker</option>
+                {% for w in occupied_workers %}
+                <option value="{{w.id}}">{{w.name}}</option>
+                {% endfor %}
+            </select>
+            {% endif %}
+        </div>
+
+        <button class="mybtn" type="submit">Assign</button>
+    </form>
+    </div>
+{% endblock %}

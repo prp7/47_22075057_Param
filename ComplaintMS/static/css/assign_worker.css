@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(213, 204, 186); /* Light blue background */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFF; /* White content background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.complaint-details {
+    background-color: wheat; /* Light blue for complaint details */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.worker-selection {
+    background-color: wheat; /* Light blue for worker selection */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #008CBA; /* Blue button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005F7D; /* Darker blue on hover */
+}
+
+.my_divs{
+    width: 95%;
+}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="/static/css/form_style.css">
+{% endblock %}
+
+{%block title %}
+Complaint Form
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h2 class="text-center mytxt">Add Complaint</h2>
+                    <form method="post">
+                        {%csrf_token%}
+                        <div class="mb-3">
+                            <label for="domain" class="form-label">Domain:</label>
+                            <select class="form-select" name="domain" id="domain" required>
+                                <option value="Hostel">Hostel</option>
+                                <option value="Department">Department</option>
+                                <option value="Library">Library</option>
+                                </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="domain_names" class="form-label">Domain Name</label>
+                            <select class="form-select" name="domain_names" id="domain_name" required>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category:</label>
+                            <select class="form-select" name="category" required>
+                                <option value="Electricity">Electricity</option>
+                                <option value="Plumbing">Plumbing</option>
+                                <option value="Water">Water</option>
+                                <option value="Food">Food</option>
+                                <option value="Cleaning">Cleaning</option>
+                                <option value="Carpentry">Carpentry</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description:</label>
+                            <textarea class="form-control" name="description" rows="4" required></textarea>
+                        </div>
+
+                        <!-- Add other necessary fields here -->
+
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary mybtn">Add Complaint</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/related_dropdowns.js">
+
+    </script>
+</div>
+{% endblock %}

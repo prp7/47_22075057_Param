@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/static/css/add_worker.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@5.5.0/css/ionicons.min.css">
+{% endblock %}
+
+{% block title %}
+User Interface
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="register-container d-flex flex-column justify-content-center">
+        <h2 class="mytxt">Add a New Worker</h2>
+        <form class="d-flex flex-column justify-content-center" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="icon ion-ios-person"></i></span>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" name="worker_name">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="icon ion-ios-call"></i></span>
+                    <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" name="worker_phone">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="icon ion-ios-briefcase"></i></span>
+                    <!-- <input type="text" class="form-control" id="category" placeholder="Enter your category"> -->
+                    <select class="form-select" id="category" name="worker_category">
+                        {% for c in catagories %}
+                        <option>{{c.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mybtn btn-sm align-self-center" id="btn1">Register</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

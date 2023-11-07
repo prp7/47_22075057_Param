@@ -1,0 +1,13 @@
+<button id="open-sidebar">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="sidebar navbar-collapse" id="sdbar">
+    <div class="close-sidebar me-2">
+        <i class="fa-solid fa-xmark" id="close-sidebar"></i>
+    </div>
+
+    <a href="/ComplaintMS/add_cmp/" id="prf">Add Complaint</a>
+    <a href="{% url 'resolved_complaints' %}">Resolved Complaints</a>
+    <a href="{% url 'unresolved_complaints' %}">Unresolved Complaints</a>
+</div>

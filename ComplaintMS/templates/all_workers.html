@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/static/css/interface_style.css">
+<link rel="stylesheet" href="/static/css/alert.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+{% endblock %}
+
+{% block title %}
+User Interface
+{% endblock %}
+
+
+
+{% block content %}
+{% for message in messages %}
+  <div class="container-fluid p-0 col-5 mx-auto" style="z-index: 2; position: fixed; top:5vh; left:40vw">
+    <div class="alert-box alert {{ message.tags }} alert-dismissible d-flex align-items-center justify-content-center" role="alert">
+      <img src="/static/img/info.jpeg" style="width: 20px; height: 20px" />
+    
+      {{ message }}
+    
+    </div>
+  </div>
+  {% endfor %}
+
+
+{% include 'sidebar.html' %}
+
+<div class="content" id="main_div">
+    
+    <a href="{% url 'my_logout_administrator' %}" class="btn btn-primary mybtn align-self-end" id="logout_btn">Logout</a>
+
+    <h1>Welcome to the CampusVoice</h1>
+    <table class="mx-auto table-bordered table shodow-lg" style="width:80%">
+        <tr id="header_tr">
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Tasks Assigned</th>
+            <th>Action</th>
+            <th>Leave</th>
+            
+        </tr>
+        {% for w in workers %}
+        <tr>
+            <td>{{ forloop.counter }}.</td>
+            <td>{{w.name}}</td>
+            <td>{{w.category}}</td>
+            <td>{{w.phone}}</td>
+            <td>{{w.status}}</td>
+            <td>{{w.task_count}}</td>
+            <td><form method="post"  id="remove_form_{{forloop.counter}}">
+                {% csrf_token %}
+                <input type="text"  name="worker_id" value="{{w.id}}" hidden>
+                <button class="btn btn-primary mybtn confirm_remove" id="remove{{forloop.counter}}">Remove</button>
+            </form></td>
+                {% if w.status == 'Available' %}
+                <td><a href="/ComplaintMS/grant_leave/{{w.id}}" class="btn btn-primary mybtn btn-sm" >Grant Leave</td>
+                {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div> 
+<script src="/static/js/sidebar.js"></script>
+<script src="/static/js/notification.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    
+<script>
+    $('.confirm_remove').on('click',function(e){
+        e.preventDefault();
+        const id = $(this).attr('id').replace('remove', '');
+        $.confirm({
+            icon: "fa-regular fa-circle-check fa-fade",
+            title: 'Confirm Remove',
+            content: "Clicked worker will be 'REMOVED'. Are you sure you want to remove?",
+            type:'orange',
+            typeAnimated:true,
+            buttons: {
+                confirm: {
+                    btnClass: 'btn-green',
+                    action: function () { 
+                        document.getElementById('remove_form_'+id).submit();
+                    }
+                },
+                cancel: {
+                    btnClass: 'btn-red any-other-class', // multiple classes.
+                    action: function () {
+                        ;
+                    }
+                }
+            }
+        })
+    }
+    )
+</script>
+{% endblock %}

@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu',sans-serif;
+}
+body {
+    min-height: 90vh;
+    background-color: wheat;
+}
+
+
+.login-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(243, 181, 11); */
+    width: 370px;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+h3 {
+    margin-top: 9px;
+    font-size: 1.9em;
+    color: rgb(187, 68, 38);
+    text-align: center;
+    margin-bottom: .7em;
+}
+
+.inst {
+    position: relative;
+    width: 310px;
+    height: 2em;
+    border-bottom: 2px solid black;
+    /* border:1px solid; */
+    margin-bottom: 5px;
+}
+.inst span {
+    position: absolute;
+    right: 5.5px;
+}
+
+.inst select{
+    position: absolute;
+    bottom: 0.3em;
+    width: 180px;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 1em;
+    text-align: left;
+    /* text-indent: 5px; */
+}
+
+.inst select option {
+    background-color: wheat;
+    text-align: left;
+}
+
+
+.input-box {
+    position: relative;
+    /* right: 10px;
+    left: 10px; */
+    width: 310px;
+    margin: 10px;
+    border-bottom: 2px solid black;
+}
+
+.input-box label{
+    font-size: 1em;
+    color:black;
+    position: absolute;
+    transform: translateY(-50%);
+    top:60%;
+    left: 5px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.input-box input:focus~label{
+    top: -1.5px;
+}
+.input-box input:valid~label{
+    top: -1.5px;
+}
+.input-box input {
+    font-size: 1em;
+    width: 100%;
+    outline: none;
+    border:none;
+    background: transparent;
+    color:black;
+    height: 50px;
+    padding-left:5px;
+}
+
+.input-box ion-icon {
+    position: absolute;
+    font-size: 1.2em;
+    right: 8px;
+    top: 40%;
+    line-height: 50px;
+    color:rgb(0, 0, 0);
+    /* margin-top: 25px; */
+}
+
+.forgotp {
+    position: absolute;
+    display: flex;
+    margin: 3px 0 15px;
+    font-size: 0.7em;
+    bottom: 19%;
+    right: 7px;
+}
+
+.forgotp a{
+    text-decoration: none;
+}
+.forgotp a:hover{
+    text-decoration: underline;
+}
+
+#btn1 {
+    margin-top: 20px;
+    cursor:pointer;
+    border: none;
+    outline: none;
+    height: 25px;
+    border-radius: 30px;
+    font-size: 0.9em;
+    width: 200px;
+    font-weight:500;
+    background-color: rgb(226, 102, 7);
+    color:white;
+}
+
+#btn1:hover {
+    background-color: rgb(187, 68, 38);
+    color:white;
+}
+
+
+.reg-link {
+    margin: 10px 0 15px;
+    font-size: 0.85em;
+}
+
+.reg-link a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.reg-link p a:hover {
+    text-decoration: underline;
+}
+
+.messages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.error {
+    background-color: #FF5733;
+    color: white;
+}
+
+
+.login-page{
+  height: 90vh;
+}
+
+  /* Style for the message boxes */
+  .alert-box {
+          background-color: #f2f2f2;
+          border-left: 6px solid;
+          border-radius: 5px;
+          margin: 10px 0;
+          padding: 10px 20px;
+          position: relative;
+      }
+
+      .alert-box.success {
+          border-color: #4CAF50;
+      }
+
+      .alert-box.info {
+          border-color: #2196F3;
+      }
+
+      .alert-box.warning {
+          border-color: #ff9800;
+      }
+
+      .alert-box.error {
+          border-color: #f44336;
+      }
+
+      /* Icon styles */
+      .icon {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+      }
+
+      /* Close button styles */
+      .close-button {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          font-size: 20px;
+          cursor: pointer;
+      }
+
+  /* Fade-out animation */
+  @keyframes fadeOut {
+      0% {
+          opacity: 1;
+      }
+      100% {
+          opacity: 0;
+      }
+  }
+
+  .alert-box {
+      /* Your existing styles */
+      animation: fadeOut 3s ease 5s 1 forwards; /* Adjust the time as needed (5s is the delay before animation starts) */
+  }

@@ -1,0 +1,15 @@
+.mybtn {
+    background-color: rgb(226, 102, 7);
+    color:white;
+}
+
+.mybtn:hover {
+    background-color: rgb(187, 68, 38);
+    color:white;
+    transform: scale(1.09);
+    transition-duration: 1s;
+}
+
+.mytxt {
+    color: rgb(187, 68, 38);
+}

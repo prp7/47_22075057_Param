@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/static/css/interface_style.css">
+{% endblock %}
+
+{% block title %}
+User Interface
+{% endblock %}
+
+
+
+{% block content %}
+{% include 'sidebar.html' %}
+
+
+<div class="content">
+    
+    <a href="{% url 'my_logout_administrator' %}" class="btn btn-primary mybtn align-self-end" id="logout_btn">Logout</a>
+
+    <h1>Welcome to the CampusVoice</h1>
+   
+</div> 
+
+<script>
+    let openSideBarE1 = document.getElementById('open-sidebar');
+    const sidebarEl = document.getElementById('sdbar');
+    const closeSidebarEl = document.getElementById('close-sidebar');
+    openSideBarE1.addEventListener("click",() => {
+        
+        sidebarEl.style.transform = "translate(0px)";
+
+    })
+
+    closeSidebarEl.addEventListener("click",()=>{
+        sidebarEl.style.transform = "translate(-250px)";
+    })
+
+</script>
+{% endblock %}
